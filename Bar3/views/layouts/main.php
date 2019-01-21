@@ -36,7 +36,14 @@ AppAsset::register($this);
 <div id="w2-collapse" class="collapse navbar-collapse">
 <ul id="w3" class="navbar-nav navbar-right nav"><li><a href="/my-category/office">Мій кабінет</a></li>
 <li><form action="/site/logout" method="post">
-<input type="hidden" name="_csrf" value="I20X1k8rqLVg0W9XR2MiH0TrpRp-Tm7Payg_H71vG6ERXSWPF3Tw5i-WIhsQU0RSfLmWTih9ILhfQWt3xT1X8A=="><button type="submit" class="btn btn-link logout">Вийти (user)</button></form></li></ul></div></div></nav>
+
+<input type="hidden" name="_csrf" value="I20X1k8rqLVg0W9XR2MiH0TrpRp-Tm7Payg_H71vG6ERXSWPF3Tw5i-WIhsQU0RSfLmWTih9ILhfQWt3xT1X8A==">
+    <?php if(Html::encode(Yii::$app->user->identity->first_name)):?>
+        <button type="submit" class="btn btn-link logout">Вийти (<?= Html::encode(Yii::$app->user->identity->first_name); ?>)</button>
+    <?php else: ?>
+        <button type="submit" class="btn btn-link logout">Увійти</button>
+    <?php endif; ?>
+</form></li></ul></div></div></nav>
 
     <div class="container">
         <?= Breadcrumbs::widget([
